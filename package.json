@@ -1,0 +1,32 @@
+{
+  "name": "grocery",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nayed/grocery.git"
+  },
+  "author": "Nayed Saïd Ali",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nayed/grocery/issues"
+  },
+  "homepage": "https://github.com/nayed/grocery#readme",
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "react": "^0.14.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-preset-es2015": "^6.5.0",
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-nodemon": "^2.0.6"
+  }
+}

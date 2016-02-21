@@ -1,0 +1,21 @@
+{
+  "name": "grocery",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Nayed Saïd Ali"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/nayed/grocery",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^0.14.7"
+  }
+}
