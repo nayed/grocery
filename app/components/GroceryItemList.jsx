@@ -1,4 +1,3 @@
-import React from 'react'
 import {GroceryItem} from './GroceryItem'
 import {GroceryListAddItem} from './GroceryListAddItem'
 
