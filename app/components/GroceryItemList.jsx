@@ -1,12 +1,18 @@
 import React from 'react'
-import {serv} from './../../server/main'
+import {GroceryItem} from './GroceryItem'
 
-export default class GroceryItemList extends React.Component {
+export class GroceryItemList extends React.Component {
     render() {
-        console.log(serv)
         return (
             <div>
                 <h1>Grocery Listify</h1>
+                <div>
+                    {this.props.items.map((item, index) => {
+                        return (
+                            <GroceryItem item={item} key={`item${index}`} />
+                        )
+                    })}
+                </div>
             </div>
         )
     }
