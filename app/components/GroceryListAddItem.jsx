@@ -1,3 +1,5 @@
+import action from './../actions/GroceryItemActionCreator'
+
 export class GroceryListAddItem extends React.Component {
     constructor(props) {
         super(props)
@@ -9,20 +11,24 @@ export class GroceryListAddItem extends React.Component {
 
     handleInputName(e) {
         this.setState({input: ReactDOM.findDOMNode(this.refs.addItem).value})
-        console.log(this.state.input)
     }
 
     addItem(e) {
         e.preventDefault()
         console.log("Adding item!", this.state.input)
+        action.add({
+            name: this.state.input
+        })
+
+        this.setState({input: ''}) // when item submit, reset input state
     }
 
     render() {
         return (
             <div className="grocery-addItem">
-                <form>
+                <form onSubmit={this.addItem.bind(this)}>
                     <input ref="addItem" value={this.state.input} onChange={this.handleInputName.bind(this)}/>
-                    <button onClick={this.addItem.bind(this)}>Add Item</button>
+                    <button>Add Item</button>
                 </form>
             </div>
         )
