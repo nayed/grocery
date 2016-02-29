@@ -5,7 +5,7 @@ let listeners = {}
 export default {
     register: function(cb) {
         let id = guid.raw()
-        listeners[id] = callback
+        listeners[id] = cb
         return id
     },
     dispatch: function(payload) {

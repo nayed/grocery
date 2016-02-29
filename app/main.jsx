@@ -1,14 +1,21 @@
 import './style.css'
 import {serv} from './../server/main'
 import {GroceryItemList} from './components/GroceryItemList'
+import {GroceryItemStore} from './stores/GroceryItemStore'
 
 console.log(serv)
 
-let initial = [
-    {name: "Ice Cream"}, 
-    {name: "Waffles"},
-    {name: "Candy", purchased: true},
-    {name: "Snarks"}
-]
+let groceryItemStore = new GroceryItemStore()
 
-ReactDOM.render(<GroceryItemList items={initial} />, app)
+let initial = groceryItemStore.getItems()
+
+function render() {
+    ReactDOM.render(<GroceryItemList items={initial} />, app)
+}
+
+groceryItemStore.onChange(items => {
+    initial = items
+    render()
+})
+
+render()
