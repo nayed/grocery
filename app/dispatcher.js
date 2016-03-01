@@ -2,7 +2,7 @@ import guid from 'guid'
 
 let listeners = {}
 
-export default {
+export let dispatcher = {
     register: function(cb) {
         let id = guid.raw()
         listeners[id] = cb

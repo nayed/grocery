@@ -1,46 +1,45 @@
-import dispatcher from './../dispatcher'
+import {dispatcher} from './../dispatcher'
 
-export class GroceryItemStore {
-    constructor() {
-        this.items = [
-            {name: "Ice Cream"}, 
-            {name: "Waffles"},
-            {name: "Candy", purchased: true},
-            {name: "Snarks"}
-        ]
-        this.listeners = []
+function GroceryItemStore() {
+    let items = [
+        { name:"Ice Cream"},
+        { name:"Waffles"},
+        { name:"Candy", purchased:true},
+        { name:"Snarks"}
+    ]
+    let listeners = []
+    
+    function getItems() {
+        return items
     }
-
-    getItems() {
-        return this.items
-    }
-
-    addGroceryItem(item) {
-        this.items.push(item)
+    
+    function addGroceryItem(item) {
+        items.push(item)
         triggerListeners()
     }
-
-    onChange(listener) {
-        this.listeners.push(listener)
+    
+    function onChange(listener) {
+        listeners.push(listener)
     }
-
-    triggerListeners() {
-        this.listeners.forEach(listener => {
+    
+    function triggerListeners() {
+        listeners.forEach(function(listener){
             listener(items)
         })
     }
-
-    dispatching() {
-        dispatcher.dispatch(event => {
-            let split = event.type.split(':')
-            if (split[0] === 'grocery-item') {
-                switch(split[1]) {
-                    case "add":
-                        console.log("eeeeeeeeeeeeeeeeee")
-                        addGroceryItem(event.payload)
-                        break
-                }
+    
+    dispatcher.register(function(event) {
+        let split = event.type.split(':')
+        if (split[0]==='grocery-item'){
+            switch(split[1]){
+                case "add":
+                    addGroceryItem(event.payload);
+                    break
             }
-        })
-    }
+        }
+    })
+    
+    return { getItems, onChange }
 }
+
+module.exports = new GroceryItemStore()
