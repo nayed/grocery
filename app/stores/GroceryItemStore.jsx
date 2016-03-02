@@ -1,11 +1,11 @@
 import {dispatcher} from './../dispatcher'
 
-function GroceryItemStore() {
+export function GroceryItemStore() {
     let items = [
-        { name:"Ice Cream"},
-        { name:"Waffles"},
-        { name:"Candy", purchased:true},
-        { name:"Snarks"}
+        { name:"Ice Cream" },
+        { name:"Waffles" },
+        { name:"Candy", purchased:true },
+        { name:"Snarks" }
     ]
     let listeners = []
     
@@ -15,6 +15,15 @@ function GroceryItemStore() {
     
     function addGroceryItem(item) {
         items.push(item)
+        triggerListeners()
+    }
+
+    function deleteGroceryItem(item) {
+        let index = items.findIndex(_item => {
+            return _item.name == item.name
+        })
+
+        items.splice(index, 1)
         triggerListeners()
     }
     
@@ -35,11 +44,12 @@ function GroceryItemStore() {
                 case "add":
                     addGroceryItem(event.payload);
                     break
+                case "delete":
+                    deleteGroceryItem(event.payload)
+                    break
             }
         }
     })
     
     return { getItems, onChange }
 }
-
-module.exports = new GroceryItemStore()

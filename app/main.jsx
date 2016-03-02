@@ -1,15 +1,17 @@
 import './style.css'
 import {serv} from './../server/main'
 import {GroceryItemList} from './components/GroceryItemList'
-import * as GroceryItemStore from './stores/GroceryItemStore'
+import {GroceryItemStore} from './stores/GroceryItemStore'
 
-let initial = GroceryItemStore.getItems()
+let groceryItemStore = new GroceryItemStore()
+
+let initial = groceryItemStore.getItems()
 
 function render() {
     ReactDOM.render(<GroceryItemList items={initial} />, app)
 }
 
-GroceryItemStore.onChange(items => {
+groceryItemStore.onChange(items => {
     initial = items
     render()
 })
