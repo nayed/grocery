@@ -26,6 +26,12 @@ export function GroceryItemStore() {
         items.splice(index, 1)
         triggerListeners()
     }
+
+    function setGroceryItemBought(item, isBought) {
+        let _item = items.filter(a => a.name == item.name)[0]
+        item.purchased = isBought || false
+        triggerListeners()
+    }
     
     function onChange(listener) {
         listeners.push(listener)
@@ -46,6 +52,12 @@ export function GroceryItemStore() {
                     break
                 case "delete":
                     deleteGroceryItem(event.payload)
+                    break
+                case "buy":
+                    setGroceryItemBought(event.payload, true)
+                    break
+                case "unbuy":
+                    setGroceryItemBought(event.payload, false)
                     break
             }
         }
