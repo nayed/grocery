@@ -1,1 +1,0 @@
-export let serv = "Hi I'm from the server"

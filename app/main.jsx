@@ -1,5 +1,4 @@
 import './style.css'
-import {serv} from './../server/main'
 import {GroceryItemList} from './components/GroceryItemList'
 import {GroceryItemStore} from './stores/GroceryItemStore'
 
